@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grove — You are made of what you repeat</title>
+<meta name="description" content="Grove is a free, local-first habit tracker. Log a day in one tap, see a year of activity as one living field, and watch your streaks take shape. No account, your data stays in your browser." />
+<meta name="theme-color" content="#050506" />
+<meta property="og:title" content="Grove — You are made of what you repeat" />
+<meta property="og:description" content="A free, local-first habit tracker. One tap to log, a whole year in one view, streaks with weight." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050506'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23FF6B4A'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%23FF6B4A' stroke-opacity='.45'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/landing.css">
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
+</head>
+<body>
+
+<div id="preloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <div class="preloader-logo"><span class="logo-mark"></span>GROVE</div>
+    <div class="preloader-barwrap"><div id="preloader-bar" class="preloader-bar"></div></div>
+    <div class="preloader-pctwrap"><span id="preloader-pct">000</span>%</div>
+  </div>
+</div>
+
+<canvas id="webgl-bg" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="shot-label" id="shot-label" aria-hidden="true">Shot 01 — close-up</div>
+
+<div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" class="cursor-ring" aria-hidden="true"><span class="cursor-ring-inner"></span></div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="/" class="logo" aria-label="Grove home"><span class="logo-mark"></span>GROVE</a>
+    <div class="nav-links">
+      <a href="#features" data-cursor-hover>Features</a>
+      <a href="#how" data-cursor-hover>How it works</a>
+      <a href="#privacy" data-cursor-hover>Privacy</a>
+    </div>
+    <div class="nav-right">
+      <a href="/app" class="nav-cta" data-magnetic data-cursor-hover>Enter Grove <span aria-hidden="true">→</span></a>
+      <button class="nav-burger" id="nav-burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <a href="#features">Features</a>
+  <a href="#how">How it works</a>
+  <a href="#privacy">Privacy</a>
+  <a href="/app" class="mobile-menu-cta">Enter Grove →</a>
+</div>
+
+<main id="main">
+<section class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-inner">
+      <span class="eyebrow">Free · Local-first · No account</span>
+      <h1 class="hero-title">
+        <span class="scramble-line" data-scramble="You are made of">You are made of</span><br>
+        <span class="scramble-line accent" data-scramble="what you repeat.">what you repeat.</span>
+      </h1>
+      <p class="hero-sub">Every rep, every page, every day you almost skipped — Grove renders it as a point of light. Enough of them, and they take the shape of a person: the one your habits are quietly building.</p>
+      <div class="hero-actions">
+        <a href="/app" class="btn btn-primary" data-magnetic data-cursor-hover>Enter Grove <span aria-hidden="true">→</span></a>
+        <a href="#features" class="btn btn-ghost" data-magnetic data-cursor-hover>See how it works</a>
+      </div>
+      <ul class="hero-facts" aria-label="Product facts">
+        <li><b>1 tap</b> to log a day</li>
+        <li><b>1 view</b> for a whole year</li>
+        <li><b>0 accounts</b>, data stays on your device</li>
+      </ul>
+    </div>
+    <div class="hero-figure-space" aria-hidden="true"></div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Scroll</span>
+    <span class="scroll-cue-line"></span>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker-track"></div>
+</div>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Grove</span>
+      <h2 class="section-title">Small ticks. Real patterns.</h2>
+      <p class="section-sub">Everything you need to see whether you're actually showing up — nothing you need to configure.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature-card glass reveal" data-tilt>
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><circle cx="12" cy="12" r="6.5" opacity="0.5"/><circle cx="12" cy="12" r="10.5" opacity="0.25"/></svg>
+        <h3 class="feature-title">Log in one tap</h3>
+        <p class="feature-desc">Tap today, done. Tap again to add a count. No forms standing between you and the habit.</p>
+      </article>
+      <article class="feature-card glass reveal" data-tilt>
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="1.6"/><circle cx="12" cy="5" r="1.6"/><circle cx="19" cy="5" r="1.6"/><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/><circle cx="5" cy="19" r="1.6"/><circle cx="12" cy="19" r="1.6"/><circle cx="19" cy="19" r="1.6"/></svg>
+        <h3 class="feature-title">See the whole field</h3>
+        <p class="feature-desc">A year of activity rendered as one living view — not a list you scroll to understand.</p>
+      </article>
+      <article class="feature-card glass reveal" data-tilt>
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 2C12 2 6 10 6 15A6 6 0 0 0 18 15C18 10 12 2 12 2Z"/></svg>
+        <h3 class="feature-title">Streaks with weight</h3>
+        <p class="feature-desc">Current and longest streaks tracked automatically — the number that keeps you honest.</p>
+      </article>
+      <article class="feature-card glass reveal" data-tilt>
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><line x1="15" y1="15" x2="20.5" y2="20.5" stroke-linecap="round"/></svg>
+        <h3 class="feature-title">Zoom through time</h3>
+        <p class="feature-desc">Week, month, quarter, half-year, year — same field, different distance.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="spotlight" aria-label="Product preview">
+  <div class="wrap">
+    <div class="spotlight-frame glass reveal" data-tilt>
+      <div class="spotlight-bar">
+        <span class="sb-dot"></span><span class="sb-dot"></span><span class="sb-dot"></span>
+        <span class="sb-label">grove — morning run (example)</span>
+      </div>
+      <div class="spotlight-body">
+        <div class="sp-head">
+          <span class="sp-title"><span class="sp-swatch"></span>Morning run</span>
+          <span class="sp-streak">18-day streak</span>
+        </div>
+        <div class="sp-heatmap" id="spotlight-heatmap"></div>
+        <div class="sp-stats">
+          <div class="sp-stat"><b>212</b><span>Days tracked</span></div>
+          <div class="sp-stat"><b>34</b><span>Longest streak</span></div>
+          <div class="sp-stat"><b>428</b><span>Total logged</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="spotlight-note reveal">Example data. Your own field starts empty and fills in as you show up.</p>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2 class="section-title">Three small steps, repeated daily</h2>
+    </div>
+    <ol class="how-row">
+      <li class="how-connector" aria-hidden="true"></li>
+      <li class="how-step reveal">
+        <div class="how-num">01</div>
+        <h3 class="how-title">Plant a habit</h3>
+        <p class="how-desc">Name it, give it a colour, it joins the field.</p>
+      </li>
+      <li class="how-step reveal">
+        <div class="how-num">02</div>
+        <h3 class="how-title">Tick it off</h3>
+        <p class="how-desc">Every day you show up, another light switches on.</p>
+      </li>
+      <li class="how-step reveal">
+        <div class="how-num">03</div>
+        <h3 class="how-title">Watch yourself take shape</h3>
+        <p class="how-desc">Streaks build, the field fills in — the pattern becomes a person.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="stat-banner" id="privacy">
+  <div class="wrap">
+    <div class="stat-banner-grid">
+      <div class="reveal"><div class="stat-big"><span data-count="0">0</span></div><div class="stat-big-label">Accounts required</div></div>
+      <div class="reveal"><div class="stat-big"><span data-count="100">0</span>%</div><div class="stat-big-label">Of your data stays in your browser</div></div>
+      <div class="reveal"><div class="stat-big"><span data-count="5">0</span></div><div class="stat-big-label">Zoom levels, week to year</div></div>
+      <div class="reveal"><div class="stat-big"><span data-count="1">0</span></div><div class="stat-big-label">Tap to log a day</div></div>
+    </div>
+    <p class="stat-note reveal">Grove keeps everything in your browser's local storage. Export a JSON backup any time from inside the app; nothing is sent anywhere.</p>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="cta-inner reveal">
+    <span class="eyebrow">Free, no account required</span>
+    <h2 class="cta-title">Come see who you're<br><span class="accent">already becoming.</span></h2>
+    <p class="cta-sub">Plant your first habit today — it takes about ten seconds, and tomorrow it will already show a streak of one.</p>
+    <a href="/app" class="btn btn-primary" data-magnetic data-cursor-hover>Enter Grove <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <a href="/" class="logo" aria-label="Grove home"><span class="logo-mark"></span>GROVE</a>
+      <div class="footer-links">
+        <a href="#features" data-cursor-hover>Features</a>
+        <a href="#how" data-cursor-hover>How it works</a>
+        <a href="/app" data-cursor-hover>Get started</a>
+      </div>
+      <div class="footer-copy">© 2026 Grove · Built by <a href="https://github.com/GlazyKahito" target="_blank" rel="noreferrer noopener">Krutik Mhatre</a></div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="assets/js/landing.js"></script>
+</body>
+</html>
